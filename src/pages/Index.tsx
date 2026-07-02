@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 const HERO_IMG = 'https://cdn.poehali.dev/projects/1d830b20-e612-4558-b1b4-c0220fa836a8/files/7fa2e828-f013-4ab6-8426-cacddc7010c3.jpg';
 
 const perks = [
@@ -6,7 +8,46 @@ const perks = [
   { icon: '✅', text: 'Гарантия 2 года' },
 ];
 
+const FABRIC_PRICES: Record<string, number> = {
+  'Офисная': 1800,
+  'Фильтрующая': 2400,
+  'Блэкаут': 2900,
+  'День-Ночь': 3500,
+};
+
+// Таймер до конца июля
+function useCountdown() {
+  const target = new Date('2026-08-01T00:00:00');
+  const calc = () => {
+    const diff = Math.max(0, target.getTime() - Date.now());
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    return { d, h, m, s };
+  };
+  const [t, setT] = useState(calc);
+  useEffect(() => { const id = setInterval(() => setT(calc()), 1000); return () => clearInterval(id); }, []);
+  return t;
+}
+
 const Index = () => {
+  const [width, setWidth]   = useState('');
+  const [height, setHeight] = useState('');
+  const [fabric, setFabric] = useState('Офисная');
+  const [price, setPrice]   = useState<number | null>(null);
+  const [name, setName]     = useState('');
+  const [phone, setPhone]   = useState('');
+  const timer = useCountdown();
+
+  const calcPrice = () => {
+    const w = parseFloat(width);
+    const h = parseFloat(height);
+    if (!w || !h) return;
+    const sq = (w / 100) * (h / 100);
+    setPrice(Math.round(sq * FABRIC_PRICES[fabric]));
+  };
+
   return (
     <div className="min-h-screen bg-white font-sans">
 
@@ -150,6 +191,155 @@ const Index = () => {
 
         </div>
       </section>
+
+      {/* КАЛЬКУЛЯТОР */}
+      <section id="calc" className="bg-white py-16">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="font-heading font-bold text-[32px] text-navy mb-10 text-center">
+            Рассчитайте стоимость за 30 секунд
+          </h2>
+
+          <div className="max-w-xl mx-auto">
+            {/* Спецпредложение */}
+            <div className="flex items-start gap-0 mb-8 rounded-xl overflow-hidden shadow-card">
+              <div className="w-1.5 flex-shrink-0 bg-[#EF8354] self-stretch" />
+              <div className="bg-[#F8F8F8] flex-1 px-6 py-5">
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="bg-[#EF8354] text-white text-[12px] font-heading font-bold px-3 py-1 rounded-full">Акция</span>
+                  <span className="font-heading font-bold text-[18px] text-navy">🎁 Только в июле: монтаж 2-х и более жалюзи — БЕСПЛАТНО</span>
+                </div>
+                <p className="text-[16px] text-[#C0522D]">
+                  До конца акции: {timer.d}д {timer.h}ч {timer.m}м {timer.s}с
+                </p>
+              </div>
+            </div>
+
+            {/* Форма калькулятора */}
+            <div className="bg-[#F8F8F8] rounded-2xl shadow-card p-8 flex flex-col gap-5">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-[14px] text-[#6C7A8D] mb-1">Ширина окна (см)</label>
+                  <input
+                    type="number"
+                    value={width}
+                    onChange={e => setWidth(e.target.value)}
+                    placeholder="например, 120"
+                    className="w-full border border-[#E8E8E8] rounded-lg px-4 py-3 text-[16px] text-navy outline-none focus:border-[#6C7A8D] transition-colors bg-white"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[14px] text-[#6C7A8D] mb-1">Высота окна (см)</label>
+                  <input
+                    type="number"
+                    value={height}
+                    onChange={e => setHeight(e.target.value)}
+                    placeholder="например, 160"
+                    className="w-full border border-[#E8E8E8] rounded-lg px-4 py-3 text-[16px] text-navy outline-none focus:border-[#6C7A8D] transition-colors bg-white"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-[14px] text-[#6C7A8D] mb-1">Тип ткани</label>
+                <select
+                  value={fabric}
+                  onChange={e => setFabric(e.target.value)}
+                  className="w-full border border-[#E8E8E8] rounded-lg px-4 py-3 text-[16px] text-navy outline-none focus:border-[#6C7A8D] transition-colors bg-white"
+                >
+                  {Object.keys(FABRIC_PRICES).map(f => <option key={f}>{f}</option>)}
+                </select>
+              </div>
+
+              <button
+                onClick={calcPrice}
+                className="w-full py-4 bg-cta text-white font-heading font-bold text-[16px] rounded-lg hover:bg-cta-hover transition-colors duration-200"
+              >
+                Рассчитать
+              </button>
+
+              {price !== null && (
+                <div className="text-center font-heading font-bold text-[24px] text-taupe pt-1">
+                  Примерная стоимость: {price.toLocaleString('ru-RU')} ₽
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ФИНАЛЬНЫЙ CTA */}
+      <section className="bg-navy py-16" id="contacts">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+          {/* Левая — текст */}
+          <div>
+            <h2 className="font-heading font-bold text-[32px] text-white mb-8 leading-tight">
+              Получите бесплатный замер сегодня
+            </h2>
+            <div className="flex flex-col gap-4">
+              {[
+                'Замер бесплатно — мастер приедет с образцами',
+                'Без предоплат до замера',
+                'Готово за 2 дня — не нужно долго ждать',
+              ].map(t => (
+                <div key={t} className="flex items-start gap-3">
+                  <span className="text-taupe mt-0.5">✅</span>
+                  <span className="text-[16px] text-taupe">{t}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Контакты */}
+            <div className="mt-10 flex flex-col gap-3 text-[16px] text-white">
+              <span>📞 +7 (423) XXX-XX-XX</span>
+              <div className="flex gap-4">
+                <span className="text-taupe cursor-pointer hover:underline">💬 WhatsApp</span>
+                <span className="text-taupe cursor-pointer hover:underline">💬 Telegram</span>
+              </div>
+              <span>📍 Владивосток, [адрес] | Артём, [адрес]</span>
+              <span>🕐 Пн–Пт 9:00–18:00, Сб 10:00–15:00</span>
+            </div>
+          </div>
+
+          {/* Правая — форма */}
+          <div className="bg-white rounded-2xl p-8 flex flex-col gap-5">
+            <div>
+              <label className="block text-[14px] text-[#6C7A8D] mb-1">Ваше имя</label>
+              <input
+                type="text"
+                value={name}
+                onChange={e => setName(e.target.value)}
+                placeholder="Иван"
+                className="w-full border border-[#E8E8E8] rounded-lg px-4 py-3 text-[16px] text-navy outline-none focus:border-[#6C7A8D] transition-colors"
+              />
+            </div>
+            <div>
+              <label className="block text-[14px] text-[#6C7A8D] mb-1">Телефон</label>
+              <input
+                type="tel"
+                value={phone}
+                onChange={e => setPhone(e.target.value)}
+                placeholder="+7 (___) ___-__-__"
+                className="w-full border border-[#E8E8E8] rounded-lg px-4 py-3 text-[16px] text-navy outline-none focus:border-[#6C7A8D] transition-colors"
+              />
+            </div>
+            <button className="w-full py-4 bg-cta text-white font-heading font-bold text-[16px] rounded-lg hover:bg-cta-hover transition-colors duration-200">
+              Вызвать замерщика бесплатно
+            </button>
+            <p className="text-[12px] text-[#6C7A8D] text-center">
+              Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ФУТЕР */}
+      <footer className="bg-navy border-t border-white/10 py-5">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-[12px] text-[#6C7A8D]">
+          <span>ИП / ООО [название] | ИНН XXXXXXXXXXXX</span>
+          <a href="#" className="hover:text-taupe transition-colors">Политика конфиденциальности</a>
+        </div>
+      </footer>
 
     </div>
   );

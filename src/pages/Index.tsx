@@ -150,8 +150,8 @@ const Index = () => {
               { img: IMG_OFFICE,   name: 'Офисные',   desc: 'Для организаций. Оптовые цены, быстрые сроки.', price: 'от 1 800 ₽', badge: 'Для организаций', badgeColor: '#6B7C5C' },
             ].map((c) => (
               <div key={c.name} className="bg-[#F8F8F8] rounded-2xl overflow-hidden shadow-card flex flex-col">
-                <div className="relative">
-                  <img src={c.img} alt={c.name} className="w-full h-52 object-cover" />
+                <div className="relative bg-[#F0EEE9]">
+                  <img src={c.img} alt={c.name} className="w-full object-contain" style={{ aspectRatio: '9/16' }} />
                   <span
                     className="absolute top-3 left-3 text-white text-[12px] font-heading font-bold px-3 py-1 rounded-full"
                     style={{ backgroundColor: c.badgeColor }}

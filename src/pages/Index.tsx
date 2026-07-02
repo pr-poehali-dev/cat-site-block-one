@@ -51,7 +51,7 @@ const Index = () => {
       {/* ── HEADER ── */}
       <header className="sticky top-0 z-50 bg-white border-b border-[#E8E8E8]">
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
-          <img src={LOGO} alt="Маркиза-ДВ" className="h-10 w-auto" />
+          <img src={LOGO} alt="Маркиза-ДВ" className="h-16 w-auto" />
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-[#1A1A2E]">
             <a href="#catalog"  className="hover:text-[#C0A882] transition-colors">Каталог</a>
             <a href="#how"      className="hover:text-[#C0A882] transition-colors">Как мы работаем</a>

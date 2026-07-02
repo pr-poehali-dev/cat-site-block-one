@@ -74,6 +74,25 @@ const Index = () => {
         </div>
       </section>
 
+      {/* TRUST BAR */}
+      <section className="bg-[#E8E8E8] border-y border-[#E8E8E8]">
+        <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-10">
+          <div className="flex items-center gap-3">
+            <span className="font-heading font-bold text-[28px] text-navy leading-none">17</span>
+            <span className="text-[15px] text-[#444444] leading-tight">лет<br />на рынке</span>
+          </div>
+          <div className="hidden sm:block w-px h-10 bg-[#C0A882]" />
+          <div className="flex items-center gap-3">
+            <span className="font-heading font-bold text-[28px] text-navy leading-none">5 000+</span>
+            <span className="text-[15px] text-[#444444] leading-tight">выполненных<br />заказов</span>
+          </div>
+          <div className="hidden sm:block w-px h-10 bg-[#C0A882]" />
+          <span className="text-[15px] text-[#444444] text-center">
+            во Владивостоке и Артёме
+          </span>
+        </div>
+      </section>
+
     </div>
   );
 };

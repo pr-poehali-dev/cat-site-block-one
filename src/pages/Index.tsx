@@ -93,6 +93,64 @@ const Index = () => {
         </div>
       </section>
 
+      {/* КАК МЫ РАБОТАЕМ */}
+      <section className="bg-[#E8E8E8] relative">
+        <div className="h-[3px] bg-[#C0A882] w-full absolute top-0 left-0" />
+        <div className="max-w-7xl mx-auto px-6 pt-14 pb-16">
+
+          <h2 className="font-heading font-bold text-[32px] text-navy mb-12 text-center">
+            Заказать жалюзи — проще, чем кажется
+          </h2>
+
+          {/* 4 шага */}
+          <div className="relative grid grid-cols-2 md:grid-cols-4 gap-8">
+            {/* пунктирная линия */}
+            <div className="hidden md:block absolute top-7 left-[12.5%] right-[12.5%] h-px border-t-2 border-dashed border-[#C0A882] z-0" />
+
+            {[
+              { icon: '📞', step: '1. Замер',           desc: 'Мастер приедет\nбесплатно' },
+              { icon: '📐', step: '2. Подбор',          desc: 'Выбираете ткань\nи цвет по образцам' },
+              { icon: '🏭', step: '3. Изготовление',    desc: 'За 2 рабочих\nдня в нашем цехе' },
+              { icon: '🔧', step: '4. Установка',       desc: 'Монтаж входит\nв стоимость' },
+            ].map((s) => (
+              <div key={s.step} className="relative z-10 flex flex-col items-center text-center gap-3">
+                <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center text-2xl shadow-card">
+                  {s.icon}
+                </div>
+                <span className="font-heading font-bold text-[15px] text-navy">{s.step}</span>
+                <span className="text-[14px] text-[#444444] leading-snug whitespace-pre-line">{s.desc}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* 3 цифры */}
+          <div className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {[
+              { num: '17 лет',  label: 'на рынке Владивостока' },
+              { num: '2 дня',   label: 'срок изготовления' },
+              { num: '2 года',  label: 'гарантия на все изделия' },
+            ].map((s) => (
+              <div key={s.num} className="bg-white rounded-xl px-8 py-7 shadow-card text-center">
+                <div className="font-heading font-bold text-[48px] text-navy leading-none mb-2">{s.num}</div>
+                <div className="text-[16px] text-[#6C7A8D]">{s.label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Отзыв */}
+          <div className="mt-10 bg-white rounded-xl shadow-card overflow-hidden flex">
+            <div className="w-1 flex-shrink-0 bg-[#C0A882]" />
+            <div className="px-8 py-7">
+              <p className="text-[16px] italic text-[#444444] leading-relaxed mb-4">
+                «Заказывала рулонные в детскую и на кухню. Приехали точно в срок, всё установили аккуратно, жалюзи идеально подошли по размеру. Рекомендую!»
+              </p>
+              <span className="font-heading font-bold text-[14px] text-[#6C7A8D]">Ирина, Владивосток</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
     </div>
   );
 };

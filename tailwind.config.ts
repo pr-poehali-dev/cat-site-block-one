@@ -19,10 +19,26 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				display: ['Pacifico', 'cursive'],
-				sans: ['Golos Text', 'sans-serif']
+				heading: ['Montserrat', 'sans-serif'],
+				sans: ['Inter', 'sans-serif']
+			},
+			boxShadow: {
+				card: '0 2px 8px rgba(0,0,0,0.08)'
 			},
 			colors: {
+				navy: '#1A1A2E',
+				taupe: '#C0A882',
+				cta: {
+					DEFAULT: '#6C7A8D',
+					hover: '#5C6A7D'
+				},
+				badge: {
+					hit: '#F0A500',
+					sale: '#EF8354',
+					popular: '#C0522D',
+					recommend: '#3B4FA0',
+					eco: '#6B7C5C'
+				},
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',

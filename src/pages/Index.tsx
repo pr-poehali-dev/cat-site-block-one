@@ -54,14 +54,22 @@ const Index = () => {
       {/* HEADER */}
       <header className="sticky top-0 z-50 bg-white border-b border-[#E8E8E8]">
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
-          <span className="font-heading font-bold text-xl text-navy tracking-tight">
-            РулоноФ
-          </span>
+          <img
+            src="https://cdn.poehali.dev/projects/1d830b20-e612-4558-b1b4-c0220fa836a8/bucket/93f9cc45-8cb4-4dd4-8a00-f587d20d2cfe.png"
+            alt="Маркиза-ДВ"
+            className="h-10 w-auto"
+          />
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-navy">
             <a href="#catalog"  className="hover:text-taupe transition-colors">Каталог</a>
             <a href="#calc"     className="hover:text-taupe transition-colors">Калькулятор</a>
             <a href="#contacts" className="hover:text-taupe transition-colors">Контакты</a>
           </nav>
+          <a
+            href="tel:+79502818877"
+            className="font-heading font-bold text-[15px] text-navy hover:text-taupe transition-colors whitespace-nowrap"
+          >
+            +7 (950) 281-88-77
+          </a>
         </div>
       </header>
 

@@ -1,76 +1,79 @@
-import { Button } from '@/components/ui/button';
-import Icon from '@/components/ui/icon';
+const HERO_IMG = 'https://cdn.poehali.dev/projects/1d830b20-e612-4558-b1b4-c0220fa836a8/files/7fa2e828-f013-4ab6-8426-cacddc7010c3.jpg';
 
-const KITTEN = 'https://cdn.poehali.dev/projects/1d830b20-e612-4558-b1b4-c0220fa836a8/files/6ec731ce-0bd4-4160-8e7a-42d061110511.jpg';
+const perks = [
+  { icon: '⚡', text: 'Готово за 2 дня' },
+  { icon: '🏭', text: 'Собственный цех' },
+  { icon: '✅', text: 'Гарантия 2 года' },
+];
 
 const Index = () => {
   return (
-    <div className="min-h-screen overflow-hidden bg-background">
-      <div className="pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full bg-primary/20 blur-3xl" />
-      <div className="pointer-events-none absolute top-1/3 -left-24 h-80 w-80 rounded-full bg-amber-300/30 blur-3xl" />
+    <div className="min-h-screen bg-white font-sans">
 
-      <header className="relative z-10 mx-auto flex max-w-6xl items-center justify-between px-6 py-8">
-        <span className="font-display text-2xl text-primary">Мурчим</span>
-        <nav className="hidden gap-8 text-sm font-medium text-foreground/70 sm:flex">
-          <a href="#about" className="transition-colors hover:text-primary">О нас</a>
-          <a href="#features" className="transition-colors hover:text-primary">Почему мы</a>
-        </nav>
-        <Button className="rounded-full px-6">Завести котика</Button>
+      {/* HEADER */}
+      <header className="sticky top-0 z-50 bg-white border-b border-[#E8E8E8]">
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+          <span className="font-heading font-bold text-xl text-navy tracking-tight">
+            РулоноФ
+          </span>
+          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-navy">
+            <a href="#catalog"  className="hover:text-taupe transition-colors">Каталог</a>
+            <a href="#calc"     className="hover:text-taupe transition-colors">Калькулятор</a>
+            <a href="#contacts" className="hover:text-taupe transition-colors">Контакты</a>
+          </nav>
+        </div>
       </header>
 
-      <main className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-6 pb-24 pt-10 lg:grid-cols-2 lg:pt-20">
-        <div className="opacity-0 animate-fade-up">
-          <span className="mb-6 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-primary shadow-sm">
-            <Icon name="Heart" size={16} /> Самые милые на свете
-          </span>
-          <h1 className="font-sans text-5xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-            Мир, где правят{' '}
-            <span className="font-display font-normal text-primary">котики</span>
-          </h1>
-          <p className="mt-6 max-w-md text-lg leading-relaxed text-foreground/70">
-            Тёплые лапки, нежное мурчание и бесконечное обаяние. Окунись в уютную атмосферу пушистого счастья.
-          </p>
-          <div className="mt-9 flex flex-wrap gap-4">
-            <Button size="lg" className="rounded-full px-8 text-base">
-              <Icon name="Sparkles" size={18} className="mr-1" /> Познакомиться
-            </Button>
-            <Button size="lg" variant="outline" className="rounded-full border-primary/30 px-8 text-base text-foreground">
-              Узнать больше
-            </Button>
-          </div>
+      {/* HERO */}
+      <section className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-[40%_60%] min-h-[calc(100vh-64px)]">
 
-          <div id="features" className="mt-14 flex gap-10">
-            {[
-              { icon: 'Cat', value: '120+', label: 'котиков' },
-              { icon: 'Star', value: '4.9', label: 'рейтинг' },
-              { icon: 'Smile', value: '∞', label: 'мурчания' },
-            ].map((s) => (
-              <div key={s.label}>
-                <div className="flex items-center gap-2 text-3xl font-bold text-foreground">
-                  <Icon name={s.icon} size={22} className="text-primary" /> {s.value}
-                </div>
-                <div className="text-sm text-foreground/60">{s.label}</div>
+        {/* LEFT — текст */}
+        <div className="flex flex-col justify-center py-16 pr-0 lg:pr-14">
+          <h1 className="font-heading font-bold text-[48px] leading-[1.1] text-navy mb-5">
+            Рулонные жалюзи<br />во Владивостоке<br />
+            <span className="text-taupe">от 1 800 ₽</span>
+          </h1>
+
+          <p className="text-[20px] font-normal text-navy mb-4 leading-snug">
+            Изготовим за 2 дня. Замер бесплатно. Гарантия 2 года.
+          </p>
+
+          <p className="text-[16px] text-[#444444] mb-8 leading-relaxed">
+            Собственное производство с 2007 года. Любые размеры — точно под ваши окна.
+            Доставка и монтаж по Владивостоку и Артёму.
+          </p>
+
+          {/* CTA */}
+          <button className="w-full py-4 px-6 bg-cta text-white font-heading font-bold text-[16px] rounded-lg transition-colors duration-200 hover:bg-cta-hover">
+            Вызвать замерщика бесплатно
+          </button>
+
+          {/* Якорная ссылка */}
+          <a href="#calc" className="mt-3 inline-block text-[14px] italic text-taupe hover:underline">
+            → Рассчитать стоимость
+          </a>
+
+          {/* Преимущества */}
+          <div className="mt-8 flex gap-6 flex-wrap">
+            {perks.map((p) => (
+              <div key={p.text} className="flex items-center gap-2">
+                <span className="text-[18px]">{p.icon}</span>
+                <span className="text-[14px] text-navy font-medium">{p.text}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="relative opacity-0 animate-fade-up [animation-delay:200ms]">
-          <div className="absolute inset-0 rounded-[2.5rem] bg-primary/10 rotate-6" />
+        {/* RIGHT — фото */}
+        <div className="hidden lg:block relative">
           <img
-            src={KITTEN}
-            alt="Милый котик"
-            className="relative aspect-square w-full rounded-[2.5rem] object-cover shadow-2xl animate-float"
+            src={HERO_IMG}
+            alt="Современная комната с рулонными шторами"
+            className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute -bottom-6 -left-6 flex items-center gap-3 rounded-2xl bg-white px-5 py-4 shadow-xl">
-            <span className="text-3xl">🐾</span>
-            <div>
-              <div className="font-semibold text-foreground">Рыжик</div>
-              <div className="text-sm text-foreground/60">всегда рядом</div>
-            </div>
-          </div>
         </div>
-      </main>
+      </section>
+
     </div>
   );
 };

@@ -28,25 +28,24 @@ const Index = () => {
       <Header />
 
       {/* HERO */}
-      <section className="relative h-[640px] flex items-center">
-        <img src={IMG_PERGOLA_HERO} alt="Биоклиматическая пергола" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/60 to-ink/20" />
-        <div className="relative max-w-7xl mx-auto px-6 w-full">
-          <div className="max-w-xl">
-            <h1 className="font-heading font-bold text-[48px] leading-[1.1] text-white mb-5">
-              Перголы, маркизы и остекление <span className="text-green-light">во Владивостоке</span>
-            </h1>
-            <p className="text-[18px] text-white/85 mb-8 leading-relaxed">
-              Проектируем, производим и устанавливаем конструкции для дома и бизнеса.
-              Собственный цех, гарантия 2 года, замер бесплатно.
-            </p>
-            <a
-              href={PHONE_HREF}
-              className="inline-block px-8 py-4 bg-green hover:bg-green-dark text-white font-heading font-bold text-[16px] rounded-lg transition-colors duration-200"
-            >
-              Получить бесплатный замер
-            </a>
-          </div>
+      <section className="bg-ink grid grid-cols-1 lg:grid-cols-[45%_55%]">
+        <div className="flex flex-col justify-center px-6 lg:px-14 py-16">
+          <h1 className="font-heading font-bold text-[48px] leading-[1.1] text-white mb-5">
+            Перголы, маркизы и остекление <span className="text-green-light">во Владивостоке</span>
+          </h1>
+          <p className="text-[18px] text-white/85 mb-8 leading-relaxed">
+            Проектируем, производим и устанавливаем конструкции для дома и бизнеса.
+            Собственный цех, гарантия 2 года, замер бесплатно.
+          </p>
+          <a
+            href={PHONE_HREF}
+            className="inline-block w-fit px-8 py-4 bg-green hover:bg-green-dark text-white font-heading font-bold text-[16px] rounded-lg transition-colors duration-200"
+          >
+            Получить бесплатный замер
+          </a>
+        </div>
+        <div className="bg-charcoal flex items-center justify-center p-4 lg:p-8">
+          <img src={IMG_PERGOLA_HERO} alt="Биоклиматическая пергола" className="max-w-full max-h-[560px] w-auto h-auto object-contain rounded-xl" />
         </div>
       </section>
 

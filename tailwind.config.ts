@@ -28,9 +28,18 @@ export default {
 			colors: {
 				navy: '#1A1A2E',
 				taupe: '#C0A882',
+				ink: '#1C1F1D',
+				charcoal: '#2A2E2C',
+				graphite: '#3B403D',
+				mist: '#F4F5F3',
+				green: {
+					DEFAULT: '#3E8E5A',
+					dark: '#2F6F45',
+					light: '#5FAE78'
+				},
 				cta: {
-					DEFAULT: '#6C7A8D',
-					hover: '#5C6A7D'
+					DEFAULT: '#3E8E5A',
+					hover: '#2F6F45'
 				},
 				badge: {
 					hit: '#F0A500',

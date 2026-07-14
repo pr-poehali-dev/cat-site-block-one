@@ -1,6 +1,6 @@
 export const LOGO = 'https://cdn.poehali.dev/projects/1d830b20-e612-4558-b1b4-c0220fa836a8/bucket/93f9cc45-8cb4-4dd4-8a00-f587d20d2cfe.png';
 
-export const IMG_PERGOLA_HERO = 'https://cdn.poehali.dev/projects/1d830b20-e612-4558-b1b4-c0220fa836a8/files/755a386e-a03b-400d-acfc-3638f32e6fb2.jpg';
+export const IMG_PERGOLA_HERO = 'https://cdn.poehali.dev/projects/1d830b20-e612-4558-b1b4-c0220fa836a8/bucket/62167396-80aa-425e-9d4a-802b534f70af.jpg';
 export const IMG_PERGOLA      = 'https://cdn.poehali.dev/projects/1d830b20-e612-4558-b1b4-c0220fa836a8/files/cd1e9ad8-36fe-414d-bf6f-97b1a1c03cb4.jpg';
 export const IMG_MARKIZA      = 'https://cdn.poehali.dev/projects/1d830b20-e612-4558-b1b4-c0220fa836a8/files/8860878a-0b36-4e8f-8e8a-0e77355aef9b.jpg';
 export const IMG_BLINDS       = 'https://cdn.poehali.dev/projects/1d830b20-e612-4558-b1b4-c0220fa836a8/files/193fc16d-2d38-49c5-a4e8-a7143ee590d2.jpg';
